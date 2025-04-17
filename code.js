@@ -27,7 +27,7 @@ function getWeather() {
       console.log(weather);
       console.log(weather.address);
       console.log(weather.currentConditions.conditions);
-      weatherPic = 'cloudy';
+      weatherPic = weather.currentConditions.conditions;
       city.textContent = cityName;
       weatherInfo.textContent = weather.currentConditions.conditions;
       getPhoto();
