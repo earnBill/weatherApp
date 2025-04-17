@@ -29,7 +29,7 @@ function getWeather() {
       console.log(weather.address);
       console.log(weather.currentConditions.conditions);
       weatherPic = weather.currentConditions.conditions;
-      city.textContent = cityName;
+      city.textContent = weather.resolvedAddress;
       weatherInfo.textContent = weather.currentConditions.conditions;
       getPhoto();
   }).catch( error => {
