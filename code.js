@@ -2,6 +2,7 @@ const inputCity = document.querySelector('.city-name');
 const searchButton = document.querySelector('.search-button');
 const city = document.querySelector('.city');
 const weatherInfo = document.querySelector('.weather-info');
+const weatherImage = document.querySelector('.weather-image');
 
 
 let cityName;
@@ -38,11 +39,12 @@ function getWeather() {
 
 function getPhoto() {
   console.log(weatherPic);
-  fetch(`https://api.giphy.com/v1/gifs/search/tags?api_key=VzxsoPxqRsGjsOj39PEYhqzUmS0ZLT3U&q=${weatherPic}&limit=25&offset=0`)
+  fetch(`https://api.giphy.com/v1/gifs/translate?api_key=VzxsoPxqRsGjsOj39PEYhqzUmS0ZLT3U&s=${weatherPic}`)
   .then(response => {
     return response.json();
   }).then(image => {
     console.log(image);
+    weatherImage.src = image.data.images.original.url;
   }).catch(error => {
     console.log(error);
   });
@@ -50,11 +52,9 @@ function getPhoto() {
 
 searchButton.addEventListener('click', ()=> {
    getWeather();
-   getPhoto();
 })
 
 
 
 
 
-  
