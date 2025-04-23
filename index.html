@@ -8,13 +8,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Weather App</h1>
-    <input type="text" placeholder="Enter your city name" class="city-name">
-    <button class="search-button">Search</button>
-    <div class="container">
-        <h2 class="city"></h2>
-        <p class="weather-info"></p>
-        <img src="#" alt="#" class="weather-image">
-    </div>
+    <header>
+        <h1>Weather App</h1>
+        <div class="search-bar">
+            <input type="text" placeholder="Enter your city name" class="city-name">
+            <button class="search-button">Search</button>
+        </div>
+        <button>°F</button>
+    </header>
+    <main>
+        <h1 class="time"></h1>
+        <div class="container">
+            <img src="#" alt="#" class="weather-image">
+            <div>
+                <div class="temprature"></div>
+                <div class="weather-info"></div>
+            </div>
+        </div>
+        <div class="city"></div>
+        <div class="description"></div>
+    </main>
+    
 </body>
 </html>

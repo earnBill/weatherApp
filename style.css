@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    color: white;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin: auto;
+}
+html {
+    background-color: gray;
+}
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+input, button {
+    color: black;
+}
+
+div {
+    font-size: 1.5rem;
+    font-weight: 900;
+    padding: 5px;
+}
+.container {
+    display: flex;
+
+    div {
+        margin: 10px;
+    }
+}
+
+
+
+img {
+    max-width: 200px;
+}
