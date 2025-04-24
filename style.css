@@ -5,13 +5,32 @@
     text-align: center;
     margin: auto;
 }
+
 html {
     background-color: gray;
 }
 header {
     display: flex;
-    flex-direction: column;
-}
+    max-width: 70vw;
+
+    img {
+        width: 100px;
+        height: 100px
+    }
+    .search-bar {
+        max-width: 500px;
+        padding: 0;
+
+        input {
+            max-width: 300px;
+            margin: 0;
+        }
+
+        button {
+            margin: 0;
+        }
+    }
+}   
 
 main {
     max-width: 500px;
@@ -21,6 +40,19 @@ main {
 
 input, button {
     color: black;
+    border-radius: 10px;
+    border: 0 solid;
+    padding: 7px;
+    font-weight: 800;
+}
+
+button {
+    background-color: black;
+    color: white;
+}
+
+button:hover {
+    background-color:red;
 }
 
 div {
@@ -34,10 +66,10 @@ div {
     div {
         margin: 10px;
     }
+    img {
+        max-width: 200px;
+        border: 2px solid white;
+        border-radius: 10px;
+    }
 }
 
-
-
-img {
-    max-width: 200px;
-}
