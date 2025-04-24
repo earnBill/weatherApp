@@ -9,6 +9,15 @@
 html {
     background-color: gray;
 }
+
+body {
+    margin-top: 50px;
+    max-width: 700px;
+    border: 5px solid white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
 header {
     display: flex;
     max-width: 70vw;

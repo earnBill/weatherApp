@@ -6,9 +6,11 @@ const time = document.querySelector('.time');
 const description = document.querySelector('.description');
 const weatherImage = document.querySelector('.weather-image');
 const temprature = document.querySelector(".temprature");
+const convertButton = document.querySelector('.convert-button');
 
 let cityName = 'Athens';
 let weatherPic;
+let weatherTemp;
 
 // async function getWeather() {
 //     const response  = await fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Trikala?key=LE3MMXGG34B5UKT9653UQ7KAL');
@@ -18,7 +20,19 @@ let weatherPic;
 // }
 
 getWeather();
-console.log('eeeeeeeeeeeeeeee');
+
+searchButton.addEventListener('click', ()=> {
+  cityName = inputCity.value;
+  getWeather();
+})
+
+convertButton.addEventListener('click', () => {
+  weatherTemp = toCelsius(temprature.textContent.slice(0,-2));
+  temprature.textContent = Math.round(weatherTemp) + '°C';
+  convertButton.textContent.toggle("F")
+  // convertButton.textContent = '°F';
+})
+
 
 function getWeather() {
   fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?key=LE3MMXGG34B5UKT9653UQ7KAL`)
@@ -53,10 +67,7 @@ function getPhoto() {
   });
 }
 
-searchButton.addEventListener('click', ()=> {
-  cityName = inputCity.value;
-  console.log(cityName);
-  getWeather();
-})
-
-
+function toCelsius(fahr) {
+  console.log('its ok');
+  return (fahr - 32) * (5 / 9);
+}
