@@ -7,10 +7,18 @@ const description = document.querySelector('.description');
 const weatherImage = document.querySelector('.weather-image');
 const temprature = document.querySelector(".temprature");
 const convertButton = document.querySelector('.convert-button');
+const main = document.querySelector('main');
+const mainContainer = document.querySelector('.main-container');
+const header = document.querySelector('header');
 
 let cityName = 'Athens';
 let weatherPic;
 let weatherTemp;
+let loadingImg = document.createElement('img');
+loadingImg.src = 'img/loading.gif';
+loadingImg.style.display = 'none';
+main.appendChild(loadingImg);
+
 
 // async function getWeather() {
 //     const response  = await fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Trikala?key=LE3MMXGG34B5UKT9653UQ7KAL');
@@ -23,13 +31,23 @@ getWeather();
 
 searchButton.addEventListener('click', ()=> {
   cityName = inputCity.value;
+  mainContainer.style.display = 'none';
+  loadingImg.style.display = 'block';
   getWeather();
 })
 
 convertButton.addEventListener('click', () => {
-  weatherTemp = toCelsius(temprature.textContent.slice(0,-2));
-  temprature.textContent = Math.round(weatherTemp) + '°C';
-  convertButton.textContent.toggle("F")
+  
+  if (convertButton.textContent  === '°C') {
+    convertButton.textContent = "°F";
+    // weatherTemp = toCelsius(temprature.textContent.slice(0,-2));
+    temprature.textContent = Math.round(toCelsius(temprature.textContent.slice(0,-2))) + '°C';
+  } else {
+    convertButton.textContent = "°C";
+    // weatherTemp = toFahr(temperature.textContent.slice)
+    temprature.textContent = toFahr(temprature.textContent.slice(0,-2)) + '°F';
+  }
+  
   // convertButton.textContent = '°F';
 })
 
@@ -48,6 +66,9 @@ function getWeather() {
       temprature.textContent = weather.currentConditions.temp + '°F';
       weatherInfo.textContent = weather.currentConditions.conditions;
       description.textContent = weather.description;
+      loadingImg.style.display = 'none';
+      mainContainer.style.display = "block";
+
       getPhoto();
   }).catch( error => {
       console.log(error);
@@ -71,3 +92,9 @@ function toCelsius(fahr) {
   console.log('its ok');
   return (fahr - 32) * (5 / 9);
 }
+
+
+function toFahr(cels) {
+  return  (cels * 9 / 5 ) + 32;
+}
+
