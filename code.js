@@ -33,6 +33,7 @@ searchButton.addEventListener('click', ()=> {
   cityName = inputCity.value;
   mainContainer.style.display = 'none';
   loadingImg.style.display = 'block';
+  convertButton.textContent = "°C";
   getWeather();
 })
 
@@ -40,15 +41,11 @@ convertButton.addEventListener('click', () => {
   
   if (convertButton.textContent  === '°C') {
     convertButton.textContent = "°F";
-    // weatherTemp = toCelsius(temprature.textContent.slice(0,-2));
     temprature.textContent = Math.round(toCelsius(temprature.textContent.slice(0,-2))) + '°C';
   } else {
     convertButton.textContent = "°C";
-    // weatherTemp = toFahr(temperature.textContent.slice)
-    temprature.textContent = toFahr(temprature.textContent.slice(0,-2)) + '°F';
+    temprature.textContent = weatherTemp + '°F'; 
   }
-  
-  // convertButton.textContent = '°F';
 })
 
 
@@ -63,6 +60,7 @@ function getWeather() {
       weatherPic = weather.currentConditions.icon;
       city.textContent = weather.resolvedAddress;
       time.textContent = weather.currentConditions.datetime.slice(0,5);
+      weatherTemp = weather.currentConditions.temp;
       temprature.textContent = weather.currentConditions.temp + '°F';
       weatherInfo.textContent = weather.currentConditions.conditions;
       description.textContent = weather.description;
@@ -91,10 +89,5 @@ function getPhoto() {
 function toCelsius(fahr) {
   console.log('its ok');
   return (fahr - 32) * (5 / 9);
-}
-
-
-function toFahr(cels) {
-  return  (cels * 9 / 5 ) + 32;
 }
 
