@@ -52,8 +52,8 @@ convertButton.addEventListener('click', () => {
 function getWeather() {
   fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?key=LE3MMXGG34B5UKT9653UQ7KAL`)
   .then((response) => {
-    return response.json()
-  }).then((weather) => {
+    return response.json()})
+    .then((weather) => {
       console.log(weather);
       console.log(weather.address);
       console.log(weather.currentConditions.conditions);
@@ -68,10 +68,15 @@ function getWeather() {
       mainContainer.style.display = "block";
 
       getPhoto();
-  }).catch( error => {
+  })
+  .catch((error) => {
       console.log(error);
+      loadingImg.style.display = 'none';
+      mainContainer.style.display = "block";
+      throwError();
   });
 }
+
 
 function getPhoto() {
   console.log(weatherPic);
@@ -89,5 +94,9 @@ function getPhoto() {
 function toCelsius(fahr) {
   console.log('its ok');
   return (fahr - 32) * (5 / 9);
+}
+
+function throwError() {
+  alert('Please enter a corrent city Name');
 }
 
